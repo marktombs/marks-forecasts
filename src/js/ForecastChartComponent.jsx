@@ -6,6 +6,7 @@ const React = require('react');
 const ForecastStore = require('./ForecastStore');
 const WeatherCodeUtil = require('./WeatherCodeUtil');
 const LineChart = require('react-chartjs').Line;
+const moment = require('moment');
 
 const ForecastChartComponent = React.createClass({
 
@@ -35,8 +36,8 @@ const ForecastChartComponent = React.createClass({
   },
 
   formatTime(dt_txt) {
-    let date = new Date(dt_txt);
-    return date.getHours() + ':' + date.getMinutes();
+    let date = moment(dt_txt);
+    return date.format('HH:mm');
   },
 
   getLabels() {

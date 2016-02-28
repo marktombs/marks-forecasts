@@ -5,6 +5,7 @@
 const React = require('react');
 const ForecastStore = require('./ForecastStore');
 const WeatherCodeUtil = require('./WeatherCodeUtil');
+const moment = require('moment');
 
 const SevenDaysComponent = React.createClass({
 
@@ -21,8 +22,8 @@ const SevenDaysComponent = React.createClass({
   },
 
   renderWeather(weather,i) {
-    let date = new Date(weather.dt_txt);
-    let formattedDate = date.getDate() + '/' + date.getMonth();
+    let date = moment(weather.dt_txt);
+    let formattedDate = date.format('ddd');
     return (
       <td key={i}>
         <div>{formattedDate}</div>

@@ -7,6 +7,7 @@ const EventEmitter = require('events').EventEmitter;
 const extend = require('lodash/extend');
 const filter = require('lodash/filter');
 const CHANGE_EVENT = 'CHANGE_EVENT';
+const moment = require('moment');
 
 let _currentCity = null;
 let _currentForecast = null;
@@ -40,7 +41,7 @@ const ForecastStore = extend({},EventEmitter.prototype, {
   },
 
   getDailyForecast() {
-    return filter(_currentForecast.list,(f) => (new Date(f.dt_txt).getHours() === 0));
+    return filter(_currentForecast.list,(f) => (moment(f.dt_txt).hour() === 0));
   },
 
   /**
